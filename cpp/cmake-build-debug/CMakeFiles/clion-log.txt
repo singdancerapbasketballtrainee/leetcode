@@ -1,4 +1,4 @@
-"D:\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/JetBrains/CLion 2021.3/bin/ninja/win/ninja.exe" -G Ninja D:\code\leetcode\leetcode_exercises\cpp
+"D:\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/JetBrains/CLion 2021.3/bin/ninja/win/ninja.exe" -G Ninja D:\code\run\leetcode\cpp
 -- The C compiler identification is GNU 11.2.0
 -- The CXX compiler identification is GNU 11.2.0
 -- Detecting C compiler ABI info
@@ -13,4 +13,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: D:/code/leetcode/leetcode_exercises/cpp/cmake-build-debug
+-- Build files have been written to: D:/code/run/leetcode/cpp/cmake-build-debug

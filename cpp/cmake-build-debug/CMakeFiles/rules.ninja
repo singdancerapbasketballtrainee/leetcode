@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "D:\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SD:\code\leetcode\leetcode_exercises\cpp -BD:\code\leetcode\leetcode_exercises\cpp\cmake-build-debug
+  command = "D:\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SD:\code\run\leetcode\cpp -BD:\code\run\leetcode\cpp\cmake-build-debug
   description = Re-running CMake...
   generator = 1
 

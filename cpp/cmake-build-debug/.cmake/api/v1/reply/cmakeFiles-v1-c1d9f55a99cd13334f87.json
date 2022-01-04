@@ -757,8 +757,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "D:/code/leetcode/leetcode_exercises/cpp/cmake-build-debug",
-		"source" : "D:/code/leetcode/leetcode_exercises/cpp"
+		"build" : "D:/code/run/leetcode/cpp/cmake-build-debug",
+		"source" : "D:/code/run/leetcode/cpp"
 	},
 	"version" : 
 	{

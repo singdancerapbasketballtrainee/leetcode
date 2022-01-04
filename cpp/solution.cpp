@@ -37,7 +37,7 @@ ListNode *solution::reverseList(ListNode *head) {
     return cur;
 }
 
-solution::string solution::longestPalindrome(solution::string s) {
+solution::string solution::longestPalindrome1(solution::string s) {
     auto length = s.size();
     auto max_palindrome_length = 0;
     int radius;
@@ -76,9 +76,42 @@ solution::string solution::longestPalindrome(solution::string s) {
     return longest_palindrome;
 }
 
-std::ostream &operator<<(std::ostream &out, std::vector<int> &nums) {
+solution::string solution::convert(solution::string s, int numRows) {
+    if(numRows == 1) return s;
+    auto new_str = s;
+    auto max_interval = 2 * (numRows - 1);
+    auto str_pos = 0;
+    for(auto r = 0;r < numRows;r ++){
+        auto first_in = 2*(numRows - r-1);
+        auto second_int = max_interval - first_in;
+//        std::cout << "r: " << r << " interval: " << first_in << " " << second_int << std::endl;
+        auto pos = r;
+        while (pos < s.length()){
+            new_str[str_pos++] = s[pos];
+            // 避免溢出 && 第一行和倒数第一行只加一次
+            if(pos + first_in < s.length() && first_in * second_int ){
+                pos += first_in;
+                new_str[str_pos++] = s[pos];
+                pos += second_int;
+            } else{
+                pos += max_interval;
+            }
+        }
+    }
+    return new_str;
+}
+
+inline std::ostream &operator<<(std::ostream &out, std::vector<int> &nums) {
     for(auto a:nums){
         out << a << ", ";
     }
     return out << std::endl;
+}
+
+inline int min(int x,int y){
+    return x<y?x:y;
+}
+
+inline int max(int x,int y){
+    return x>y?x:y;
 }

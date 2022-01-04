@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = D$:/code/leetcode/leetcode_exercises/cpp/cmake-build-debug/
+cmake_ninja_workdir = D$:/code/run/leetcode/cpp/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target cpp
 
@@ -49,19 +49,19 @@ cmake_ninja_workdir = D$:/code/leetcode/leetcode_exercises/cpp/cmake-build-debug
 
 build cmake_object_order_depends_target_cpp: phony || CMakeFiles/cpp.dir
 
-build CMakeFiles/cpp.dir/main.cpp.obj: CXX_COMPILER__cpp_Debug D$:/code/leetcode/leetcode_exercises/cpp/main.cpp || cmake_object_order_depends_target_cpp
+build CMakeFiles/cpp.dir/main.cpp.obj: CXX_COMPILER__cpp_Debug D$:/code/run/leetcode/cpp/main.cpp || cmake_object_order_depends_target_cpp
   DEP_FILE = CMakeFiles\cpp.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -ID:/code/leetcode/leetcode_exercises/cpp/.
+  INCLUDES = -ID:/code/run/leetcode/cpp/.
   OBJECT_DIR = CMakeFiles\cpp.dir
   OBJECT_FILE_DIR = CMakeFiles\cpp.dir
   TARGET_COMPILE_PDB = CMakeFiles\cpp.dir\
   TARGET_PDB = cpp.pdb
 
-build CMakeFiles/cpp.dir/solution.cpp.obj: CXX_COMPILER__cpp_Debug D$:/code/leetcode/leetcode_exercises/cpp/solution.cpp || cmake_object_order_depends_target_cpp
+build CMakeFiles/cpp.dir/solution.cpp.obj: CXX_COMPILER__cpp_Debug D$:/code/run/leetcode/cpp/solution.cpp || cmake_object_order_depends_target_cpp
   DEP_FILE = CMakeFiles\cpp.dir\solution.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -ID:/code/leetcode/leetcode_exercises/cpp/.
+  INCLUDES = -ID:/code/run/leetcode/cpp/.
   OBJECT_DIR = CMakeFiles\cpp.dir
   OBJECT_FILE_DIR = CMakeFiles\cpp.dir
   TARGET_COMPILE_PDB = CMakeFiles\cpp.dir\
@@ -91,7 +91,7 @@ build cpp.exe: CXX_EXECUTABLE_LINKER__cpp_Debug CMakeFiles/cpp.dir/main.cpp.obj 
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D D:\code\leetcode\leetcode_exercises\cpp\cmake-build-debug && "D:\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D D:\code\run\leetcode\cpp\cmake-build-debug && "D:\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -102,7 +102,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D D:\code\leetcode\leetcode_exercises\cpp\cmake-build-debug && "D:\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SD:\code\leetcode\leetcode_exercises\cpp -BD:\code\leetcode\leetcode_exercises\cpp\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D D:\code\run\leetcode\cpp\cmake-build-debug && "D:\JetBrains\CLion 2021.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SD:\code\run\leetcode\cpp -BD:\code\run\leetcode\cpp\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -120,7 +120,7 @@ build cpp: phony cpp.exe
 # =============================================================================
 
 #############################################
-# Folder: D:/code/leetcode/leetcode_exercises/cpp/cmake-build-debug
+# Folder: D:/code/run/leetcode/cpp/cmake-build-debug
 
 build all: phony cpp.exe
 
