@@ -2,6 +2,8 @@
 // Created by heqimin on 2022/1/5.
 //
 
+#include <algorithm>
+#include <map>
 #include "solution.h"
 
 void solution::quickSort(std::vector<int> &nums) {
@@ -25,6 +27,7 @@ void solution::quick(std::vector<int> &nums, int left, int right) {
     quick(nums, l+1,right);
 }
 
+// 反转链表
 ListNode *solution::reverseList(ListNode *head) {
     ListNode* cur = nullptr;
     auto pre = head;
@@ -37,7 +40,59 @@ ListNode *solution::reverseList(ListNode *head) {
     return cur;
 }
 
-solution::string solution::longestPalindrome1(solution::string s) {
+ListNode *solution::removeNthFromEnd(ListNode *head, int n) {
+    auto reveres_list = reverseList(head);
+    if(n == 1){
+        return reverseList(reveres_list->next);
+    }
+    auto cur = reveres_list;
+    for(auto i = 0;i < n - 2;i++){
+        cur = cur->next;
+    }
+    cur->next = cur->next->next;
+    return reverseList(reveres_list);
+}
+
+ListNode *solution::mergeTwoLists(ListNode *list1, ListNode *list2) {
+    if(list1 == nullptr){
+        return list2;
+    }
+    if(list2 == nullptr){
+        return list1;
+    }
+    ListNode* cur;
+    if (list1->val <= list2->val){
+        cur = list1;
+        list1 = list1->next;
+    } else{
+        cur = list2;
+        list2 = list2->next;
+    }
+    auto ret_list = cur;
+    while (list1 != nullptr || list2 != nullptr){
+        if(list1 == nullptr){
+            cur->next = list2;
+            break;
+        }
+        if(list2 == nullptr){
+            cur->next = list1;
+            break;
+        }
+        if (list1->val <= list2->val){
+            cur->next = list1;
+            list1 = list1->next;
+        } else{
+            cur->next = list2;
+            list2 = list2->next;
+        }
+        cur = cur->next;
+    }
+    return ret_list;
+}
+
+
+
+string solution::longestPalindrome1(string s) {
     auto length = s.size();
     auto max_palindrome_length = 0;
     int radius;
@@ -76,7 +131,7 @@ solution::string solution::longestPalindrome1(solution::string s) {
     return longest_palindrome;
 }
 
-solution::string solution::convert(solution::string s, int numRows) {
+string solution::convert(string s, int numRows) {
     if(numRows == 1) return s;
     auto new_str = s;
     auto max_interval = 2 * (numRows - 1);
@@ -99,6 +154,82 @@ solution::string solution::convert(solution::string s, int numRows) {
         }
     }
     return new_str;
+}
+
+vector<vector<int>> solution::threeSum(vector<int> &nums) {
+    vector<vector<int>> ret;
+    if(nums.size() < 3) return ret;
+    auto tmp = nums;
+    sort(tmp.begin(),tmp.end());
+    for(auto left = tmp.begin();left != tmp.end() - 2;left++){
+        if(left != tmp.begin() && *left == *(left - 1)) continue;
+        auto right = tmp.end() - 1;
+        for(auto mid = left + 1;mid  < right;mid ++){
+            if(mid != left + 1 && *mid == *(mid - 1)) continue;
+            while (mid  < right && *left + *mid + *right > 0) right--;
+            if(mid == right)break;
+            if(*left + *mid + *right == 0) ret.push_back(vector<int>{*left,*mid,*right});
+        }
+    }
+    return ret;
+}
+
+string solution::int2Roman(int num) {
+    int  nums[13] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    string romans[13] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+    string ans;
+    for(int i = 0;i<13;i++){
+        while (num >= nums[i]){
+            num -= nums[i];
+            ans += romans[i];
+        }
+    }
+    return ans;
+}
+
+int solution::romanToInt(string s) {
+    map<char,int> r2i = {{'M',1000},{'D',500},{'C',100},{'L',50},{'X',10},{'V',5},{'I',1}};
+    if(s.empty()) return 0;
+    auto roman = 0;
+    for(auto iter = s.begin();iter < s.end() - 1; iter++){
+        if(r2i[*iter] < r2i[*(iter + 1)]){
+            roman -= r2i[*iter];
+        } else{
+            roman += r2i[*iter];
+        }
+    }
+    return roman + r2i[*(s.end()-1)];
+}
+
+int solution::romanToInt2(string s) {
+    if(s.empty()) return 0;
+    auto roman = 0;
+    for(auto iter = s.begin();iter < s.end() - 1; iter++){
+        if(R2I(*iter) < R2I(*(iter + 1))){
+            roman -= R2I(*iter);
+        } else{
+            roman += R2I(*iter);
+        }
+    }
+    return roman + R2I(*(s.end()-1));
+}
+
+int solution::longestValidParentheses(string s) {
+    // todo
+    return 0;
+}
+
+inline int R2I(char r){
+    switch (r) {
+        case 'I': return 1;
+        case 'V': return 5;
+        case 'X': return 10;
+        case 'L': return 50;
+        case 'C': return 100;
+        case 'D': return 500;
+        case 'M': return 1000;
+        default: return 0;
+    }
 }
 
 inline std::ostream &operator<<(std::ostream &out, std::vector<int> &nums) {

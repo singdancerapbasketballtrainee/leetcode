@@ -11,7 +11,9 @@ int main(){
 //    std::cout << nums;
 //    auto s = "sbabk";
 //    std::cout << sol->longestPalindrome1(s);
-    auto s = "PAYPALISHIRING";
-    auto numRows = 3;
-    std::cout<<sol->convert(s,numRows);
+    auto s = "(()";
+    std::cout<<sol->longestValidParentheses(s)<<endl;
+    std::cout<<sol->longestValidParentheses("")<<endl;
+    std::cout<<sol->longestValidParentheses(")(")<<endl;
+    std::cout<<sol->longestValidParentheses(")()())")<<endl;
 }
