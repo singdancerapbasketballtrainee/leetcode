@@ -30,12 +30,17 @@ public:
     //快排
     void quick(std::vector<int> &nums,int left,int right); // 指定下标
     void quickSort(std::vector<int>&nums);  // 整个数组
-    //反转链表
+    // 反转链表
     ListNode* reverseList(ListNode* head);
-    //删除链表的倒数第 N 个结点
+    // 删除链表的倒数第 N 个结点
     ListNode* removeNthFromEnd(ListNode* head, int n);
-    //合并两个有序链表
+    // 合并两个有序链表
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2);
+    // 合并K个升序链表
+    ListNode* mergeKLists1(vector<ListNode*>& lists);
+    ListNode* mergeKLists2(vector<ListNode*>& lists);
+    // K 个一组翻转链表
+    ListNode* reverseKGroup(ListNode* head, int k);
     // 最长回文
     string longestPalindrome1(string s); // 方法一：遍历（中心点移动&两边拓展
     // Z 字形变换
@@ -49,6 +54,8 @@ public:
     int romanToInt2(string s);
     // 最长有效括号
     int longestValidParentheses(string s);
+    // 有效的括号
+    bool isValid(string s);
 };
 
 int R2I(char r);

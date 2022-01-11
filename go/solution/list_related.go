@@ -71,3 +71,39 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	}
 	return retList
 }
+
+// 合并K个升序链表
+func mergeKLists(lists []*ListNode) *ListNode {
+	if lists == nil || len(lists) == 0 {
+		return nil
+	}
+
+	list, pos := lists[0], 1
+	for pos < len(lists) {
+		list = mergeTwoLists(list, lists[pos])
+		pos++
+	}
+	return list
+}
+
+// K个一组翻转链表
+func reverseKGroup(head *ListNode, k int) *ListNode {
+	newHead := new(ListNode)
+	cur, cnt := newHead, 0
+	lastHead, nextHead := head, head
+	for head != nil {
+		if cnt == k-1 {
+			nextHead = head.Next
+			head.Next = nil
+			cur.Next = reverseList(lastHead)
+			cur = lastHead
+			head = lastHead
+			head.Next = nextHead
+			lastHead = nextHead
+			cnt = -1
+		}
+		cnt++
+		head = head.Next
+	}
+	return newHead.Next
+}

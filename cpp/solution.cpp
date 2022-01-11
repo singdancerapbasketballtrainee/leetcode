@@ -90,7 +90,53 @@ ListNode *solution::mergeTwoLists(ListNode *list1, ListNode *list2) {
     return ret_list;
 }
 
+ListNode *solution::mergeKLists1(vector<ListNode *> &lists) {
+    if(lists.empty()) return nullptr;
+    auto list = lists[0];
+    int i = 1;
+    while (i < lists.size()){
+        list = mergeTwoLists(list,lists[i]);
+    }
+    return list;
+}
 
+ListNode *solution::mergeKLists2(vector<ListNode *> &lists){
+    if(lists.empty()) return nullptr;
+    if(lists.size() == 1) return lists[0];
+    if(lists.size() == 2) return mergeTwoLists(lists[0],lists[1]);
+    auto mid_pos = lists.size() / 2;
+    auto lists1 = vector<ListNode *>(mid_pos);
+    auto lists2 = vector<ListNode *>(lists.size()-mid_pos);
+    for(auto i = 0;i < mid_pos;i++){
+        lists1[i] = lists[i];
+    }
+    for(auto i = 0;i < lists.size() - mid_pos;i++){
+        lists2[i] = lists[mid_pos + i];
+    }
+    return mergeTwoLists(mergeKLists2(lists1), mergeKLists2(lists2));
+}
+
+ListNode* solution::reverseKGroup(ListNode* head, int k){
+    auto new_head = new ListNode;
+    auto cur = new_head;
+    auto cnt = 0;
+    auto last_head = head;
+    auto next_head = head;
+    while (head != nullptr){
+        if(cnt++ == k){
+            next_head = head->next;
+            head->next = nullptr;
+            cur->next = reverseList(last_head);
+            cur = last_head;
+            head = last_head;
+            head->next = next_head;
+            last_head = next_head;
+            cnt = 0;
+        }
+        head = head->next;
+    }
+    return  new_head->next;
+}
 
 string solution::longestPalindrome1(string s) {
     auto length = s.size();
@@ -218,6 +264,11 @@ int solution::longestValidParentheses(string s) {
     // todo
     return 0;
 }
+
+bool solution::isValid(string s) {
+    return false;
+}
+
 
 inline int R2I(char r){
     switch (r) {
