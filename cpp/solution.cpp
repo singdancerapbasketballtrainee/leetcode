@@ -2,9 +2,10 @@
 // Created by heqimin on 2022/1/5.
 //
 
+#include "solution.h"
 #include <algorithm>
 #include <map>
-#include "solution.h"
+#include <stack>
 
 void solution::quickSort(std::vector<int> &nums) {
     auto left = 0;
@@ -266,7 +267,25 @@ int solution::longestValidParentheses(string s) {
 }
 
 bool solution::isValid(string s) {
-    return false;
+    if(s.length() % 2 ) return false;
+    stack<char> stk;
+    map<char,char> pairs = {
+            {')','('},
+            {']','['},
+            {'}','{'}
+    };
+    for(auto ch:s){
+        if(pairs.count(ch)){
+            if(stk.empty()||stk.top() != pairs[ch]){
+                return false;
+            }else{
+                stk.pop();
+            }
+        }else{
+            stk.push(ch);
+        }
+    }
+    return stk.empty();
 }
 
 
